@@ -546,7 +546,6 @@ func (gen *Generator) proxyArgFromGo(memTip tl.Tip, name string,
 		proxy = fmt.Sprintf("%s(%s)", helper.Name, name)
 		return proxy, helper.Nillable
 	case isPlain && goSpec.Slices != 0: // ex: []byte
-		//gen.submitHelper(sliceHeader)
 		proxy = fmt.Sprintf("(%s)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&%s)).Data)), cgoAllocsUnknown", cgoSpec.AtLevel(0), name)
 		return
 	case isPlain: // ex: byte, [4]byte
